@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoWheels Database Queries</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>GoWheels Database Query Tool</h1>
+    
+    <div class="query-selector">
+      <label for="querySelect">Select Query:</label>
+      <select id="querySelect">
+        <option value="driversByAge">Driver Age Group Analysis</option>
+        <option value="passengersByLocation">Passenger Location Analysis</option>
+      </select>
+    </div>
+    
+    <!-- Form 1: Driver Age Group Analysis -->
+    <div id="driversByAgeForm" class="query-form">
+      <h2>Driver Age Group Analysis</h2>
+      <p>Analyze average ratings of drivers by their age groups.</p>
+      
+      <form id="driverAgeForm">
+        <div class="form-group">
+          <label for="currentDate">Current Date:</label>
+          <input type="date" id="currentDate" name="currentDate" required>
+        </div>
+        
+        <button type="submit" class="btn-submit">Run Query</button>
+      </form>
+      
+      <div id="driverAgeResults" class="results-container hidden">
+        <h3>Results:</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Age Group</th>
+              <th>Average Rating</th>
+              <th>Driver Count</th>
+            </tr>
+          </thead>
+          <tbody id="driverAgeTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Form 2: Passenger Location Analysis -->
+    <div id="passengersByLocationForm" class="query-form hidden">
+      <h2>Passenger Pickup Location Analysis</h2>
+      <p>Find pickup locations with multiple passengers.</p>
+      
+      <form id="passengerLocationForm">
+        <div class="form-group">
+          <label for="minPassengers">Minimum Passengers:</label>
+          <input type="number" id="minPassengers" name="minPassengers" min="1" value="2">
+        </div>
+        
+        <div class="form-group">
+          <label for="locationPattern">Location Name Contains:</label>
+          <input type="text" id="locationPattern" name="locationPattern" placeholder="Optional - e.g. Street, Circle">
+        </div>
+        
+        <button type="submit" class="btn-submit">Run Query</button>
+      </form>
+      
+      <div id="passengerLocationResults" class="results-container hidden">
+        <h3>Results:</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Pickup Location</th>
+              <th>Passenger Count</th>
+              <th>Passenger Names</th>
+            </tr>
+          </thead>
+          <tbody id="passengerLocationTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div id="loader" class="hidden">
+      <div class="spinner"></div>
+      <p>Loading data...</p>
+    </div>
+    
+    <div id="errorMessage" class="error hidden"></div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
